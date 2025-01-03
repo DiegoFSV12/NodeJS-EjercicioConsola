@@ -5,17 +5,19 @@ interface RunOptions{
     num:number;
     limit:number;
     show:boolean;
+    name:string;
+    destination:string;
 }
 
 export class ServerApp{
     
-    static run({num,limit,show}:RunOptions){
+    static run({num,limit,show,name,destination}:RunOptions){
         console.log('ServerApp running...');
         const table = new CreateTable().execute({num,limit});
         const wasCreated = new SaveFile().execute({
             fileContent:table,
-            fileDestination:`outputs/table-${num}`,
-            fileName:`table-${num}`
+            fileDestination:destination,
+            fileName:name
         });
         if(show){console.log(table);}
         if(wasCreated){console.log('Archivo creado!');}
