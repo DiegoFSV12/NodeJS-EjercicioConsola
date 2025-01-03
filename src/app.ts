@@ -1,4 +1,5 @@
 import { yarg } from "./config/plugins/args.plugin";
+import { ServerApp } from "./presentation/server-app";
 
 //Funcion asincrona que espera a que se ejecute la funcion main
 (async()=>{
@@ -7,6 +8,6 @@ import { yarg } from "./config/plugins/args.plugin";
 })();
 
 async function main(){
-    console.log('Main Ejecutado');
-    console.log(yarg);
+    const {m:num,l:limit,s:show} = yarg;
+    ServerApp.run({num,limit,show});
 }
