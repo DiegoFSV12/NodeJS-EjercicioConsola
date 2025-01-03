@@ -10,7 +10,7 @@ export const yarg = yargs(process.argv)
 })
 .option('l',{
     alias:'limit',
-    type:'boolean',
+    type:'number',
     default:5,
     describe:'List the multiplication table'
 })
@@ -19,5 +19,9 @@ export const yarg = yargs(process.argv)
     type:'boolean',
     default:false,
     describe:'Show multiplication table on console'
+})
+.check((argv, options)=>{
+    if(argv.m < 1) throw 'Error: The base number must be greater than 0';
+    return true;
 })
 .parseSync();
