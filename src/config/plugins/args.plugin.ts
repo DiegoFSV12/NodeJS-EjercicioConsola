@@ -1,7 +1,7 @@
 import yargs from 'yargs';
 import {hideBin} from 'yargs/helpers';
 
-export const yarg = yargs(process.argv)
+export const yarg = yargs(hideBin(process.argv))
 .option('m',{
     alias:'num',
     type:'number',
